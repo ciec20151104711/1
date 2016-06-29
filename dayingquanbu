@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+	
+	FILE *fp;
+	char fn[60],ch;
+	fscanf("export.gpx: ");
+	gets(fn);
+	if((fp = fopen(fn,"rt")) == NULL)
+	{
+		printf("打开文件%失败！\n",fn);
+		exit(1);
+	}
+	while(fscanf(fp,"%c",&ch) == 1)
+	{
+		if((ch >= 'a') && (ch <= 'z'))
+	    	ch = ch - 'a' + 'A';
+		else if((ch >= 'A') && (ch <= 'Z'))
+	    	ch = ch -'A' + 'a';
+		printf("%c",ch);
+	}
+	fclose(fp);
+	
+	return 0;
+} 
