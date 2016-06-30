@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *fp;
+	char *s;
+	int flag;
+	int len = 0;
+	   if((fp = fopen("c:\\Users\\admin\\Desktop\\123.txt","r")) == 0)
+	   {
+		   printf("打开文件失败！");
+		   return (-1);
+	   }
+	flag = fseek(fp,0,SEEK_END);
+	len = ftell(fp);
+	s = (char *)malloc(len);
+	printf("length = %d  flag = %d\n",len,flag);
+	fclose(fp);
+	return 0;
+}
