@@ -1,0 +1,25 @@
+#include<stdio.h>
+#include<malloc.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *fp;
+	int flen = 0;
+	char *str;
+	printf("str len = %d\n",sizeof(str));
+	if((fp = fopen("C:\\Users\\jszx\\Desktop\\1.txt","rw")) == 0)
+	{
+		printf("打开文件失败！\n");
+		return 0;
+	}
+	fseek(fp,0,SEEK_END);
+	flen = ftell(fp);
+	fseek(fp,0,SEEK_SET);
+	str = (char *)malloc(1*flen);
+	fread(str,1,flen,fp);
+	printf("len = %d\0    %c\n",flen,str[0]);
+	free(fp);
+	fclose(fp);
+	
+	return 0;
+}
