@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char *ptr1 = "gjfdsklghlgoigt;rjg g fipsdgjf;'gjrpisd'godghdsf;g jfd;lgd;'gjap65310.2186132.0 g hfdsgkldg;dfgj sdfk;g54465 4sgv";
+	char s[20];
+	int i = 0;
+	while(!((* (ptr1 + i) == 'g')&&(* (ptr1 + i +1) == 'j')&&(* (ptr1 + i + 2) == 'a')))
+	{
+		i++;
+	}
+	strncpy(s,ptr1+i+4,16);
+	s[16] = '\0';
+	printf("%s\n",s);
+	return 0;}
