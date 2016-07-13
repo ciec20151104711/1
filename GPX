@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+    int l,i,a;
+	char *ptr;
+	char lat[20];
+	char lon[20];
+	char date[20];
+	char time[20];
+	FILE *fp;
+    FILE *fp1;
+	fp=fopen("export.gpx","r");
+	fp1=fopen("export.csv","w");
+	if((fp = fopen("export.gpx","r")) == 0)//打开文件，只读，根据fopen的返回值（fp），判断该文件是否打开 
+	{
+		printf("打开文件失败！");
+		return -1;
+	}
+	else
+	{
+		fseek(fp,SEEK_SET,SEEK_END);
+	    l=ftell(fp);
+	    fseek(fp,0,SEEK_SET);
+	    ptr=new char[l+1];
+	    fread(ptr,sizeof(char),l,fp);
+	}
+	i=0;
+	a=0;
+	fprintf(fp1,"序号,纬度,经度,日期,时间\n");
+	while(!((* (ptr + i) == '<') && (* (ptr + i + 1) == '/') && (* (ptr + i + 2) == 'g') && (* (ptr + i + 3) == 'p') && (* (ptr + i + 4) == 'x') && (* (ptr + i + 5) == '>')))
+	{
+		if((* (ptr + i) == ' ') && (* (ptr + i + 1) == 'l') && (* (ptr + i + 2) == 'a') && (* (ptr + i + 3) == 't'))
+		{
+			strncpy(lat,&ptr[i+6],9);
+		    strncpy(lon,&ptr[i+22],10);
+		    strncpy(date,&ptr[i+44],10);
+		    strncpy(time,&ptr[i+55],8);
+		    lat[9]='\0';
+		    lon[10]='\0';
+		    date[10]='\0';
+		    time[8]='\0';
+		    fprintf(fp1,"%d,%s,%s,%s,%s\n",a+1,lat,lon,date,time);
+		    a++;
+		}
+		i++;
+		
+	}
+	fclose(fp);
+	fclose(fp1);
+	free(ptr); 
+	return 0;
+}
