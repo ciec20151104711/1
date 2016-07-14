@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+    int len,i=0,a=0;//定义int型变量 
+	char *ptr;//定义一个char型指针 
+	char lat[20];//定义一个数组，长度为20 
+	char lon[20];
+	char date[20];
+	char time[20];
+	FILE *fp;//定义一个FILE型指针
+    FILE *fp1;
+	fp=fopen("export.gpx","r");//以只读的方式打开文件 
+	fp1=fopen("export.csv","w");//写入一个文件 
+	if((fp = fopen("export.gpx","r")) == 0)//打开文件，只读，根据fopen的返回值（fp），判断该文件是否打开
+	{
+		printf("打开文件失败！");
+		return -1;
+	}
+	else
+	{
+		fseek(fp,SEEK_SET,SEEK_END);
+	    len=ftell(fp);
+	    fseek(fp,0,SEEK_SET);//把文件指针指向开头 
+	    ptr=new char[len+1];//开辟一个长度为l+1的字符空间 
+	    fread(ptr,sizeof(char),len,fp);//从硬盘读取长度为sizeof（char）到ptr，每次读len字节 
+	}
+	fprintf(fp1,"编号,纬度,经度,日期,时间\n");
+	while(!((* (ptr + i) == '<') && (* (ptr + i + 1) == '/') && (* (ptr + i + 2) == 'g') && (* (ptr + i + 3) == 'p') && (* (ptr + i + 4) == 'x') && (* (ptr + i + 5) == '>')))
+	{
+		if((* (ptr + i) == ' ') && (* (ptr + i + 1) == 'l') && (* (ptr + i + 2) == 'a') && (* (ptr + i + 3) == 't'))
+		{
+			strncpy(lat,&ptr[i+6],9);
+		    strncpy(lon,&ptr[i+22],10);
+		    strncpy(date,&ptr[i+44],10);
+		    strncpy(time,&ptr[i+55],8);
+		    lat[9]='\0';
+		    lon[10]='\0';
+		    date[10]='\0';
+		    time[8]='\0';
+		    fprintf(fp1,"%d,%s,%s,%s,%s\n",a+1,lat,lon,date,time);
+		    a++;
+		}
+		i++;
+		
+	}
+	fclose(fp);
+	fclose(fp1);
+	free(ptr); 
+	return 0;
+}
