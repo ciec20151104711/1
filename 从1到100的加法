@@ -1,0 +1,44 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+var str = "Hello, playground"
+var swiftstring = "swift is fun"
+var hours = 24
+var PI = 3.14
+var SwiftIsFun = true
+
+var me = ("Mr.k",20,"20151104711")// type inference
+me.0
+me.1
+me.2
+
+var x:Int
+var s:String// type annotation
+PI = 3.1415926535
+let minutes = 30
+let fireIsHot = true
+
+
+// Integer:1/10/100/1000
+//Double: 3.14/5.23
+
+
+/*var i=1,sum=0;
+while i<=100
+{
+    sum=sum+i;
+    i=i+1;
+}
+print (sum)
+*/
+
+
+
+/*var y=0
+for x in 0...100
+{
+    y=y+x
+}
+print (y)
+*/
