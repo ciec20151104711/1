@@ -1,0 +1,69 @@
+import Foundation
+
+
+/*//let array = ["1","2","3","4","5","6","7","8","9","10"]
+var count:[String] = ["1","2","3","4","5","6","7","8","9","10"]
+//var clearShopCart = []
+
+print(count[0])
+*/
+
+/*extension Sequence where Iterator.Element == Int{
+    private func removeRepeats()->[Int]{
+        let set = Set(self)
+        return Array(set).sorted {$0>$1}
+    }
+    
+    private func countFor(value:Int)->Int{
+        return filter {$0 == value}.count
+    }
+    
+    func sortByRepeatCount()->[Iterator.Element]{
+        var wets = [[Int]]()
+        let clearedAry = removeRepeats()
+        for i in clearedAry{
+            wets.append([i,countFor(value: i)])
+        }
+        
+        wets = wets.sorted {
+            $0[1] > $1[1]
+        }
+        
+        var result = [Int]()
+        for x in wets{
+            let i = x[0]
+            let count = x[1]
+            for _ in 0..<count{
+                result.append(i)
+            }
+        }
+        
+        return result
+    }
+}
+
+var ary = [3,5,6,1,4,2,9,7,8,0]
+print(ary.sortByRepeatCount())
+//输出 "[6, 6, 6, 1, 1, 1, 4, 4, 3, 3, 5, 2]\n"
+*／
+
+
+
+
+var count = [3,5,6,7,2,1,4,0,9,8]
+print(count)
+
+for j in 0...9
+{
+    for i in 0...8
+    {
+        if count[i]>count[i+1]
+        {
+            count[i]=count[i]+count[i+1]
+            count[i+1]=count[i]-count[i+1]
+            count[i]=count[i]-count[i+1]
+        }
+    }
+}
+print("排序后")
+print(count)
