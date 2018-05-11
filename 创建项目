@@ -1,0 +1,8 @@
+通过点击 "File" 菜单然后选择 New > Java Project
+在项目浏览器(Project Explorer)窗口中鼠标右击任一地方选择 New > Java Project
+在工具条上点击新建按钮 (new_button ) 并选择 Java Project
+新建 Java 项目向导有两个页面。
+第一个页面:
+输入项目名称（Project Name 栏中）
+选择 Java Runtime Environment (JRE) 或直接采用默认的
+选择项目布局（Project Layout），项目布局决定了源代码和 class 文件是否放置在独立的文件夹中。 推荐的选项是为源代码和 class 文件创建独立的文件夹。
