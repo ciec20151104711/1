@@ -1,0 +1,25 @@
+I = checkerboard
+
+I = checkerboard(n)
+
+I = checkerboard(n,p,q)
+I = checkerboard 创建一个8X8的正方形、4个可识别边角的棋盘图像，每个正方形的边长为10个像素。棋盘图像分为亮部分和暗部分，棋盘左边为亮部分、白色，右边为暗部分、黑色
+I = checkerboard(n) 指定棋盘图像中每个正方形单元的边长为n个像素
+I = checkerboard(n,p,q) 创建一个2p×2q个单元的矩形棋盘图像，每个单元的边长为n个像素。如果你忽略q,MATLAB将会默认q=p，整个棋盘图像为正方形
+创建一个棋盘图像，每个小正方形单元的边长是20个像素:
+
+I = checkerboard(20);
+
+imshow(I)
+
+创建一个4×6的棋盘图像:
+
+J = checkerboard(10,2,3);
+
+figure, imshow(J)
+
+创建一个黑白棋盘图像:
+
+K = (checkerboard > 0.5);
+
+figure, imshow(K)
