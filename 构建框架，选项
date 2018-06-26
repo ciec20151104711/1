@@ -1,0 +1,31 @@
+// 设置窗体的大小并居中
+        this.setSize(500, 600); // 设置窗体大小
+        this.setTitle("五子棋游戏"); // 设置窗体标题
+
+        int width = Toolkit.getDefaultToolkit().getScreenSize().width;// 获取屏幕的宽度
+        int height = Toolkit.getDefaultToolkit().getScreenSize().height;// 获取屏幕的高度
+        this.setLocation((width - 500) / 2, (height - 500) / 2); // 设置窗体的位置（居中）
+        this.setResizable(false); // 设置窗体不可以放大
+        // this.setLocationRelativeTo(null);//这句话也可以设置窗体居中
+        /*
+         * 菜单栏的目录设置
+         */
+        // 设置菜单栏
+        JMenuBar bar = new JMenuBar();
+        this.setJMenuBar(bar);
+        // 添加菜单栏目录
+        JMenu menu1 = new JMenu("游戏菜单"); // 实例化菜单栏目录
+        JMenu menu2 = new JMenu("设置");
+        JMenu menu3 = new JMenu("帮助");
+        bar.add(menu1); // 将目录添加到菜单栏
+        bar.add(menu2);
+        bar.add(menu3);
+
+        JMenu menu4 = new JMenu("博弈模式"); // 将“模式”菜单添加到“设置”里面
+        menu2.add(menu4);
+
+        // JMenuItem item1=new JMenuItem("人人博弈");
+        // JMenuItem item2=new JMenuItem("人机博弈");
+        // 设置“”目录下面的子目录
+        JRadioButtonMenuItem item1 = new JRadioButtonMenuItem("人人博弈");
+        JRadioButtonMenuItem item2 = new JRadioButtonMenuItem("人机博弈");
