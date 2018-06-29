@@ -1,0 +1,38 @@
+for (int i = 0; i <=15; i++) {
+            g.drawLine(50,i*42+50, 680,i*42+50);// x 轴
+            g.drawLine(i*42+50,50,i*42+50,680); // y 轴
+        }
+
+
+    }
+    public void repaint(Graphics g,Point point){
+        super.repaint();
+        if(index % 2 == 1) {
+            g.setColor(Color.black);
+            g.fillOval(point.x - 21, point.y - 21, 42, 42);
+        }
+        else if(index % 2 == 0) {
+            g.setColor(Color.blue);
+            g.fillOval(point.x - 21, point.y - 21, 42, 42);
+        }
+    }
+    public void Setqz(Point point,int number){
+        int i, j;
+        this.point = point;
+        i = ((int) point.getX() - 50)  / 42;
+        j = ((int) point.getY() - 50)  / 42;
+        index++;
+        if(number == 1) {
+            qz[j][i] = 1;
+        }
+        else if(number == 2) {
+            qz[j][i] = 2;
+        }
+    }
+    public boolean isEmpty(Point point){
+        int i, j;
+        i = ((int) point.getX() - 50)  / 42;
+        j = ((int) point.getY() - 50)  / 42;
+        if (qz[j][i] == 0) return false;
+        else return true;
+    }
