@@ -1,0 +1,51 @@
+public void paint(Graphics g) {
+
+        super.paint(g);
+        int imgWidth = boardImg.getWidth(this); // 获取图片的宽度
+        int imgHeight = boardImg.getHeight(this); // 获取图片的高度
+        int FWidth = getWidth();
+        int FHeight = getHeight();
+        String message; // 标记谁下棋
+        int x = (FWidth - imgWidth) / 2;
+        int y = (FHeight - imgHeight) / 2;
+        g.drawImage(boardImg, x, y, null); // 添加背景图片到容器里面
+        g.setFont(new Font("宋体", 0, 14));
+        g.drawString("黑方时间：" + blackTime, 30, 470);
+        g.drawString("白方时间：" + whiteTime, 260, 470);
+        // 绘制棋盘
+        for (int i = 0; i < 15; i++) {
+            g.drawLine(30, 30 + 30 * i, 450, 30 + 30 * i);
+            g.drawLine(30 + 30 * i, 30, 30 + 30 * i, 450);
+        }
+
+        // 绘制五个中心点
+        g.fillRect(240 - 5, 240 - 5, 10, 10); // 绘制最中心的正方形
+        g.fillRect(360 - 5, 360 - 5, 10, 10); // 绘制右下的正方形
+        g.fillRect(360 - 5, 120 - 5, 10, 10); // 绘制右上的正方形
+        g.fillRect(120 - 5, 360 - 5, 10, 10);// 绘制左下的正方形
+        g.fillRect(120 - 5, 120 - 5, 10, 10);// 绘制左上的正方形
+
+        // 定义棋盘数组
+
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                // if (allChess[i][j] == 1) {
+                // // 黑子
+                // int tempX = i * 30 + 30;
+                // int tempY = j * 30 + 30;
+                // g.fillOval(tempX - 7, tempY - 7, 14, 14);
+                // }
+                // if (allChess[i][j] == 2) {
+                // // 白子
+                // int tempX = i * 30 + 30;
+                // int tempY = j * 30 + 30;
+                // g.setColor(Color.WHITE);
+                // g.fillOval(tempX - 7, tempY - 7, 14, 14);
+                // g.setColor(Color.BLACK);
+                // g.drawOval(tempX - 7, tempY - 7, 14, 14);
+                // }
+                draw(g, i, j); // 调用下棋子函数
+            }
+
+        }
+    }
