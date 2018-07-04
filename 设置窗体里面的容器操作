@@ -1,0 +1,19 @@
+public class MyPanel extends JPanel implements MouseListener, Runnable {
+    private static final Toolkit ResourceUtil = null;
+    public Image boardImg; // 定义背景图片
+    static int[][] allChess = new int[15][15]; // 棋盘数组
+    static int[][] temporaryChess = new int[15][15];
+    int x;// 保存棋子的横坐标
+    int y;// 保存棋子的纵坐标
+    Boolean canPlay = false; // 游戏是否继续，默认为继续
+    Boolean isBlack = true;// 是否是黑子，默认为黑子
+    Boolean isManAgainst = false; // 判断是否是人人对战
+    String message = "用户下棋";
+    Thread t = new Thread(this);
+    int maxTime = 120;
+    int blackTime = 120;
+    int whiteTime = 120;
+    String blackMessage = "无限制";
+    String whiteMessage = "无限制";
+    static int gameDifficulty = 0;// 设置游戏难度，0为傻瓜模式，1为简单，2为普通，3为困难
+    // 获取isBlack的值
