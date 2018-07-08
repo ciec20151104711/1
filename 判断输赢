@@ -1,0 +1,33 @@
+private boolean checkWin(int x, int y) {
+        // TODO Auto-generated method stub
+
+        boolean flag = false;
+        // 保存共有多少相同颜色棋子相连
+        int count = 1;
+        // 判断横向 特点：allChess[x][y]中y值相同
+        int color = allChess[x][y];
+        // 判断横向
+        count = this.checkCount(x, y, 1, 0, color);
+        if (count >= 5) {
+            flag = true;
+        } else {
+            // 判断纵向
+            count = this.checkCount(x, y, 0, 1, color);
+            if (count >= 5) {
+                flag = true;
+            } else {
+                // 判断右上左下
+                count = this.checkCount(x, y, 1, -1, color);
+                if (count >= 5) {
+                    flag = true;
+                } else {
+                    // 判断左下右上
+                    count = this.checkCount(x, y, 1, 1, color);
+                    if (count >= 5) {
+                        flag = true;
+                    }
+                }
+            }
+        }
+        return flag;
+    }
