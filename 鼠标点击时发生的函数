@@ -1,0 +1,18 @@
+@Override
+    public void mousePressed(MouseEvent e) {
+        // x = e.getX();// 获取鼠标点击坐标的横坐标
+        // y = e.getY();// 获取鼠标点击坐标的纵坐标
+        // if (x >= 29 && x <= 451 && y >= 29 && y <= 451) { // 鼠标点击在棋子框里面才有效
+        //
+        // }
+
+        if (canPlay == true) {// 判断是否可以开始游戏
+            x = e.getX(); // 获取鼠标的焦点
+            y = e.getY();
+            if (isManAgainst == true) {// 判断是否是人人对战
+                manToManChess();
+            } else { // 否则是人机对战，人机下棋
+                manToMachine();
+            }
+        }
+    }
