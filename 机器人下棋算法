@@ -1,0 +1,50 @@
+public void machineChess(int gameDifficulty) {
+        if (gameDifficulty == 0) {
+            int i, j;
+            boolean chessSucceed = true;// 下棋成功的标志
+            while (chessSucceed) {
+                i = (int) (Math.random() * 15);
+                j = (int) (Math.random() * 15);
+                if (allChess[i][j] == 0) {
+                    allChess[i][j] = 2;
+                    chessSucceed = false;
+                }
+            }
+        } else if (gameDifficulty == 1) {
+            int max = 0;
+            int m = 0, n = 0;
+            int figureSort[] = new int[4];// 对棋子的四个方向进行打分
+            for (int i = 0; i < 15; i++) {
+                for (int j = 0; j < 15; j++) {
+                    if (allChess[i][j] == 0) {
+                        figureSort[0] = checkCountMachine(i, j, 0, 1, 1);
+                        figureSort[1] = checkCountMachine(i, j, 1, 0, 1);
+                        figureSort[2] = checkCountMachine(i, j, 1, -1, 1);
+                        figureSort[3] = checkCountMachine(i, j, 1, 1, 1);
+                        sortFourFigure(figureSort);
+                        temporaryChess[i][j] = figureSort[0] * 12 + figureSort[1] * 25 + figureSort[2] * 50// 算出空白棋子的最大分
+                                + figureSort[3] * 100;
+                    }
+                    // System.out.print(temporaryChess[i][j] + " ");
+                }
+                // System.out.print("\n");
+            }
+            // System.out.print("=============================\n");
+            for (int i = 0; i < 15; i++) {
+                for (int j = 0; j < 15; j++) {
+                    if (temporaryChess[i][j] > max && allChess[i][j] != 2 && allChess[i][j] != 1) {
+                        m = i;
+                        n = j;
+                        max = temporaryChess[i][j];
+                    }
+                }
+            }
+            allChess[m][n] = 2;
+
+        } else if (gameDifficulty == 2) {
+
+        } else {
+
+        }
+        this.repaint();
+    }
