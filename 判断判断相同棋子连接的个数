@@ -1,0 +1,37 @@
+private int checkCount(int x, int y, int xChange, int yChange, int color) {
+        // TODO Auto-generated method stub
+        int count = 1;
+        int tempX = xChange;
+        int tempY = yChange;
+        while (x + xChange >= 0 && x + xChange <= 14 && y + yChange >= 0 && y + yChange <= 14
+                && color == allChess[x + xChange][y + yChange]) {
+            count++;
+            if (xChange != 0) {
+                xChange++;
+            }
+            if (yChange != 0) {
+                if (yChange > 0) {
+                    yChange++;
+                } else {
+                    yChange--;
+                }
+            }
+        }
+        xChange = tempX;
+        yChange = tempY;
+        while (x - xChange >= 0 && x - xChange <= 14 && y - yChange >= 0 && y - yChange <= 14
+                && color == allChess[x - xChange][y - yChange]) {
+            count++;
+            if (xChange != 0) {
+                xChange++;
+            }
+            if (yChange != 0) {
+                if (yChange > 0) {
+                    yChange++;
+                } else {
+                    yChange--;
+                }
+            }
+        }
+        return count;
+}
